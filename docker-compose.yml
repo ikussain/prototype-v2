@@ -1,0 +1,15 @@
+version: "3"
+services:
+  web-server:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d:ro
+    restart: on-failure
+
+  app:
+    build: ./app
+    ports:
+      - "3000:3000"
+    restart: on-failure
